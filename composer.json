@@ -1,6 +1,6 @@
 {
     "name": "bee-delivery/omie",
-    "description": "Integração rápida e fácil com a Omie, em PHP",
+    "description": "Integração rápida e fácil com a Omie, em PHP/Laravel",
     "authors": [
         {
             "name": "John Kennedy",
