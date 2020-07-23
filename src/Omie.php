@@ -10,27 +10,27 @@ use BeeDelivery\Omie\src\Categoria;
 use BeeDelivery\Omie\src\Departamento;
 
 class Omie{	
-    public function cliente(){
-        return new Cliente();
+    public function cliente($app_key, $app_secret){
+        return new Cliente($app_key, $app_secret);
     }
 
-    public function recebivel(){
-        return new Recebivel();
+    public function recebivel($app_key, $app_secret){
+        return new Recebivel($app_key, $app_secret);
     }
 
-    public function pagavel(){
-        return new Pagavel();
+    public function pagavel($app_key, $app_secret){
+        return new Pagavel($app_key, $app_secret);
     }
 
-    public function categoria(){
-        return new Categoria();
+    public function categoria($app_key, $app_secret){
+        return new Categoria($app_key, $app_secret);
     }
 
-    public function departamento(){
-        return new Departamento();
+    public function departamento($app_key, $app_secret){
+        return new Departamento($app_key, $app_secret);
     }
 
-    public function conta(){
-        return new Conta();
+    public function conta($app_key, $app_secret){
+        return new Conta($app_key, $app_secret);
     }
 }
