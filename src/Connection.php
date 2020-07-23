@@ -15,11 +15,26 @@ class Connection {
 
     public function __construct($apiKey = null, $apiSecret = null) {
 
-        if($apiKey == null)
-        $this->api_key      = config('omie.app_key');
+        if($apiKey == null){
 
-        if($apiSecret == null)
-        $this->api_secret   = config('omie.app_secret');
+            $this->api_key = config('omie.app_key');
+
+        }else{
+
+            $this->api_key = $apiKey;
+
+        }
+
+
+        if($apiSecret == null){
+
+            $this->api_secret = config('omie.app_secret');
+
+        }else{
+
+            $this->api_secret = $apiSecret;
+
+        }
 
         $this->base_url     = config('omie.base_url');
 
