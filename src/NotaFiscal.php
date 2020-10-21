@@ -32,7 +32,7 @@ class NotaFiscal
      * @see https://app.omie.com.br/api/v1/produtos/nfconsultar/#ConsultarNotaFiscais
      * @return json
      */
-    public function consultarNfse($nPagina = null, $nRegPorPagina = null)
+    public function listarNfse($nPagina = null, $nRegPorPagina = null)
     {
         return $this->http->post('/servicos/nfse/', [
 
