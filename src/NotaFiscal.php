@@ -21,15 +21,9 @@ class NotaFiscal
      * @see https://app.omie.com.br/api/v1/produtos/nfconsultar/#ConsultarNotaFiscais
      * @return json
      */
-    public function consultarNfe($cCodNFInt, $nCodNF, $nNF)
+    public function consultarNfe($nfe)
     {
-        return $this->http->post('/produtos/nfconsultar/', [
-
-            "cCodNFInt" => $cCodNFInt,
-            "nCodNF"  => $nCodNF,
-            "nNF"  => $nNF,
-
-        ], 'ConsultarNotaFiscais');
+        return $this->http->post('/produtos/nfconsultar/', $nfe, 'ConsultarNotaFiscais');
     }
 
     /**
@@ -38,7 +32,7 @@ class NotaFiscal
      * @see https://app.omie.com.br/api/v1/produtos/nfconsultar/#ConsultarNotaFiscais
      * @return json
      */
-    public function consultarNfse($nPagina, $nRegPorPagina)
+    public function consultarNfse($nPagina = null, $nRegPorPagina = null)
     {
         return $this->http->post('/servicos/nfse/', [
 
