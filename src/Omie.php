@@ -34,11 +34,8 @@ class Omie{
         return new Conta($app_key, $app_secret);
     }
 
-    public function notaFiscal($app_key, $app_secret){
-        return new NotaFiscal($app_key, $app_secret);
-    }
-    public function cupomFiscal($app_key, $app_secret){
-        return new CupomFiscal($app_key, $app_secret);
+    public function ordemServico($app_key, $app_secret){
+        return new OrdemServico($app_key, $app_secret);
     }
 
 }
