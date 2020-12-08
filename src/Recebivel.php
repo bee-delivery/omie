@@ -139,9 +139,7 @@ class Recebivel
      */
     public function lancarRecebimento($recebimento)
     {
-        return $this->http->post(
-
-            '/financas/contareceber/',
+        return $this->http->post('/financas/contareceber/',
             $recebimento,
             'LancarRecebimento'
         );
@@ -174,9 +172,7 @@ class Recebivel
      */
     public function incluir($recebivel)
     {
-        return $this->http->post(
-
-            '/financas/contareceber/',
+        return $this->http->post('/financas/contareceber/',
             $recebivel,
             'IncluirContaReceber'
         );
