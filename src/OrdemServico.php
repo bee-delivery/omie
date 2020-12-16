@@ -1,7 +1,7 @@
 <?php
 
 
-namespace BeeDelivery\Omie;
+namespace BeeDelivery\Omie\src;
 
 
 use BeeDelivery\Omie\src\Connection;
