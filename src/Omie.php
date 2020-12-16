@@ -4,6 +4,7 @@ namespace BeeDelivery\Omie;
 
 use BeeDelivery\Omie\src\Cliente;
 use BeeDelivery\Omie\src\Conta;
+use BeeDelivery\Omie\src\OrdemServico;
 use BeeDelivery\Omie\src\Pagavel;
 use BeeDelivery\Omie\src\Recebivel;
 use BeeDelivery\Omie\src\Categoria;
