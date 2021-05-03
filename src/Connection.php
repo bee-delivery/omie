@@ -1,39 +1,35 @@
 <?php
 
-namespace BeeDelivery\Omie\src;
-
+namespace BeeDelivery\Omie;
 
 use GuzzleHttp\Client;
 
-
-class Connection {
+class Connection
+{
 
     public $http;
     public $api_key;
     public $api_secret;
     public $base_url;
 
-    public function __construct($apiKey = null, $apiSecret = null) {
+    public function __construct($apiKey = null, $apiSecret = null)
+    {
 
-        if($apiKey == null){
+        if ($apiKey == null) {
 
             $this->api_key = config('omie.app_key');
-
-        }else{
+        } else {
 
             $this->api_key = $apiKey;
-
         }
 
 
-        if($apiSecret == null){
+        if ($apiSecret == null) {
 
             $this->api_secret = config('omie.app_secret');
-
-        }else{
+        } else {
 
             $this->api_secret = $apiSecret;
-
         }
 
         $this->base_url     = config('omie.base_url');
@@ -51,13 +47,13 @@ class Connection {
     public function get($url, $call)
     {
 
-        try{
+        try {
             $response = $this->http->get($this->base_url . $url, $call);
             return [
                 'code'     => $response->getStatusCode(),
                 'response' => json_decode($response->getBody()->getContents())
             ];
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
 
             return [
                 'code'     => $e->getCode(),
@@ -69,18 +65,19 @@ class Connection {
     }
 
     public function post($url, $params, $call)
-    {       
+    {
         $body = [
 
             'body'          => json_encode([
-            'call'          => $call,
-            'app_key'       => $this->api_key,
-            'app_secret'    => $this->api_secret,
-            'param'         => [$params]
+                'call'          => $call,
+                'app_key'       => $this->api_key,
+                'app_secret'    => $this->api_secret,
+                'param'         => [$params]
 
-        ])];
-        
-        try{
+            ])
+        ];
+
+        try {
 
             $response = $this->http->post($this->base_url . $url, $body);
 
@@ -88,14 +85,12 @@ class Connection {
                 'code'     => $response->getStatusCode(),
                 'response' => json_decode($response->getBody()->getContents())
             ];
-
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
 
             return [
                 'code'     => $e->getCode(),
                 'response' => $e->getMessage()
             ];
-            
         }
     }
 
@@ -104,5 +99,4 @@ class Connection {
         $response = $this->http->delete($this->base_url . $url);
         return json_decode($response->getBody()->getContents(), true);
     }
-    
 }

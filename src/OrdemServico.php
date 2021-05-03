@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BeeDelivery\Omie\src;
+namespace BeeDelivery\Omie;
 
 
-use BeeDelivery\Omie\src\Connection;
+use BeeDelivery\Omie\Connection;
 
 class OrdemServico
 {
@@ -82,6 +82,4 @@ class OrdemServico
             'StatusOS'
         );
     }
-
-
 }

@@ -14,7 +14,7 @@ class OmieServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/omie.php' => config_path('omie.php'),
+            __DIR__ . '/../config/omie.php' => config_path('omie.php'),
         ]);
     }
 
@@ -25,7 +25,7 @@ class OmieServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/omie.php', 'omie');
+        $this->mergeConfigFrom(__DIR__ . '/../config/omie.php', 'omie');
 
 
         // Register the service the package provides.

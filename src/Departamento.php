@@ -1,8 +1,8 @@
 <?php
 
-namespace BeeDelivery\Omie\src;
+namespace BeeDelivery\Omie;
 
-use BeeDelivery\Omie\src\Connection;
+use BeeDelivery\Omie\Connection;
 
 class Departamento
 {
@@ -22,13 +22,13 @@ class Departamento
      * @param String $apenas_importado, S/N
      * @return json
      */
-    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = "N")
+    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = 'N')
     {
         return $this->http->post('/geral/departamentos/', [
-            
-            "pagina"                => $pagina,
-            "registros_por_pagina"  => $registros_por_pagina,
-            "apenas_importado_api"  => $apenas_importado_api,
+
+            'pagina'                => $pagina,
+            'registros_por_pagina'  => $registros_por_pagina,
+            'apenas_importado_api'  => $apenas_importado_api,
 
         ], 'ListarDepartamentos');
     }

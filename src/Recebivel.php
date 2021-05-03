@@ -1,8 +1,8 @@
 <?php
 
-namespace BeeDelivery\Omie\src;
+namespace BeeDelivery\Omie;
 
-use BeeDelivery\Omie\src\Connection;
+use BeeDelivery\Omie\Connection;
 
 class Recebivel
 {
@@ -23,13 +23,13 @@ class Recebivel
      * @param String $apenas_importado, S/N
      * @return json
      */
-    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = "N")
+    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = 'N')
     {
         return $this->http->post('/financas/contareceber/', [
 
-            "pagina"                => $pagina,
-            "registros_por_pagina"  => $registros_por_pagina,
-            "apenas_importado_api"  => $apenas_importado_api,
+            'pagina'                => $pagina,
+            'registros_por_pagina'  => $registros_por_pagina,
+            'apenas_importado_api'  => $apenas_importado_api,
 
         ], 'ListarContasReceber');
     }
@@ -43,12 +43,12 @@ class Recebivel
      * @param String $idInterno
      * @return json
      */
-    public function consultar($idOmie = "", $idInterno = "")
+    public function consultar($idOmie = '', $idInterno = '')
     {
         return $this->http->post('/financas/contareceber/', [
 
-            "codigo_lancamento_omie"        => $idOmie,
-            "codigo_lancamento_integracao"  => $idInterno,
+            'codigo_lancamento_omie'        => $idOmie,
+            'codigo_lancamento_integracao'  => $idInterno,
 
         ], 'ConsultarContaReceber');
     }
@@ -80,16 +80,18 @@ class Recebivel
      * @param String $idBaixaInterno
      * @return json
      */
-    public function conciliar($idBaixa = "", $idBaixaInterno = "")
+    public function conciliar($idBaixa = '', $idBaixaInterno = '')
     {
         return $this->http->post(
 
             '/financas/contareceber/',
             [
-                "codigo_baixa"              => $idBaixa,
-                "codigo_baixa_integracao"   => $idBaixaInterno
+                'codigo_baixa'              => $idBaixa,
+                'codigo_baixa_integracao'   => $idBaixaInterno
 
-            ],'ConciliarRecebimento');
+            ],
+            'ConciliarRecebimento'
+        );
     }
 
     /**
@@ -100,16 +102,18 @@ class Recebivel
      * @param String $idBaixaInterno
      * @return json
      */
-    public function desconciliar($idBaixa = "", $idBaixaInterno = "")
+    public function desconciliar($idBaixa = '', $idBaixaInterno = '')
     {
         return $this->http->post(
             '/financas/contareceber/',
             [
 
-                "codigo_baixa"              => $idBaixa,
-                "codigo_baixa_integracao"   => $idBaixaInterno
+                'codigo_baixa'              => $idBaixa,
+                'codigo_baixa_integracao'   => $idBaixaInterno
 
-            ],'DesconciliarRecebimento');
+            ],
+            'DesconciliarRecebimento'
+        );
     }
 
     /**
@@ -120,12 +124,12 @@ class Recebivel
      * @param String $idInterno
      * @return json
      */
-    public function excluir($idOmie = "", $idInterno = "")
+    public function excluir($idOmie = '', $idInterno = '')
     {
         return $this->http->post('/financas/contareceber/', [
 
-            "chave_lancamento"              => $idOmie,
-            "codigo_lancamento_integracao"  => $idInterno,
+            'chave_lancamento'              => $idOmie,
+            'codigo_lancamento_integracao'  => $idInterno,
 
         ], 'ExcluirContaReceber');
     }
@@ -139,7 +143,8 @@ class Recebivel
      */
     public function lancarRecebimento($recebimento)
     {
-        return $this->http->post('/financas/contareceber/',
+        return $this->http->post(
+            '/financas/contareceber/',
             $recebimento,
             'LancarRecebimento'
         );
@@ -153,12 +158,12 @@ class Recebivel
      * @param String $idInterno
      * @return json
      */
-    public function cancelarRecebimento($idOmie = "", $idInterno = "")
+    public function cancelarRecebimento($idOmie = '', $idInterno = '')
     {
         return $this->http->post('/financas/contareceber/', [
 
-            "codigo_baixa"              => $idOmie,
-            "codigo_baixa_integracao"   => $idInterno,
+            'codigo_baixa'              => $idOmie,
+            'codigo_baixa_integracao'   => $idInterno,
 
         ], 'CancelarRecebimento');
     }
@@ -172,7 +177,8 @@ class Recebivel
      */
     public function incluir($recebivel)
     {
-        return $this->http->post('/financas/contareceber/',
+        return $this->http->post(
+            '/financas/contareceber/',
             $recebivel,
             'IncluirContaReceber'
         );

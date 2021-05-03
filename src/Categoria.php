@@ -1,9 +1,9 @@
 <?php
 
-namespace BeeDelivery\Omie\src;
+namespace BeeDelivery\Omie;
 
 
-use BeeDelivery\Omie\src\Connection;
+use BeeDelivery\Omie\Connection;
 
 class Categoria
 {
@@ -23,14 +23,14 @@ class Categoria
      * @param String $apenas_importado, S/N
      * @return json
      */
-    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = "N")
+    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = 'N')
     {
         return $this->http->post('/geral/categorias/', [
-            
-            "pagina"                => $pagina,
-            "registros_por_pagina"  => $registros_por_pagina,
-            "apenas_importado_api"  => $apenas_importado_api,
-            
-        ],  "ListarCategorias");
+
+            'pagina'                => $pagina,
+            'registros_por_pagina'  => $registros_por_pagina,
+            'apenas_importado_api'  => $apenas_importado_api,
+
+        ],  'ListarCategorias');
     }
 }
