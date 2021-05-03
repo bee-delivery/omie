@@ -1,7 +1,8 @@
 <?php
 
-namespace BeeDelivery\Omie\src;
-use BeeDelivery\Omie\src\Connection;
+namespace BeeDelivery\Omie;
+
+use BeeDelivery\Omie\Connection;
 
 class Conta
 {
@@ -15,69 +16,69 @@ class Conta
     }
 
     /**
-    * Recupera todas as contas
-    *
-    * @see https://app.omie.com.br/api/v1/geral/contacorrente/#ListarContasCorrentes
+     * Recupera todas as contas
+     *
+     * @see https://app.omie.com.br/api/v1/geral/contacorrente/#ListarContasCorrentes
      * @param Integer $pagina, $registros_por_pagina
      * @param String $apenas_importado, S/N
      * @return json
      */
-    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = "N")
+    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = 'N')
     {
         return $this->http->post('/geral/contacorrente/', [
 
-            "pagina"                => $pagina,
-            "registros_por_pagina"  => $registros_por_pagina,
-            "apenas_importado_api"  => $apenas_importado_api,
+            'pagina'                => $pagina,
+            'registros_por_pagina'  => $registros_por_pagina,
+            'apenas_importado_api'  => $apenas_importado_api,
 
         ], 'ListarContasCorrentes');
     }
 
 
     /**
-    * Consulta os dados de uma conta
-    *
-    * @see https://app.omie.com.br/api/v1/geral/contacorrente/#ConsultarContaCorrente
-    * @param String $idOmie
-    * @param String $idInterno
-    * @return json
-    */
-    public function consultar($idOmie = "", $idInterno = "")
+     * Consulta os dados de uma conta
+     *
+     * @see https://app.omie.com.br/api/v1/geral/contacorrente/#ConsultarContaCorrente
+     * @param String $idOmie
+     * @param String $idInterno
+     * @return json
+     */
+    public function consultar($idOmie = '', $idInterno = '')
     {
         return $this->http->post('/geral/contacorrente/', [
 
-            "nCodCC"    => $idOmie,
-            "cCodCCInt" => $idInterno
+            'nCodCC'    => $idOmie,
+            'cCodCCInt' => $idInterno
 
         ], 'ConsultarContaCorrente');
     }
 
     /**
-    * Exclui uma conta da base de dados.
-    *
-    * @see https://app.omie.com.br/api/v1/geral/contacorrente/#ExcluirContaCorrente
-    * @param String $idOmie
-    * @param String $idInterno
-    * @return json
-    */
-    public function excluir($idOmie = "", $idInterno = "")
+     * Exclui uma conta da base de dados.
+     *
+     * @see https://app.omie.com.br/api/v1/geral/contacorrente/#ExcluirContaCorrente
+     * @param String $idOmie
+     * @param String $idInterno
+     * @return json
+     */
+    public function excluir($idOmie = '', $idInterno = '')
     {
         return $this->http->post('/geral/contacorrente/', [
 
-            "nCodCC"    => $idOmie,
-            "cCodCCInt" => $idInterno
+            'nCodCC'    => $idOmie,
+            'cCodCCInt' => $idInterno
 
         ], 'ExcluirContaCorrente');
     }
 
 
     /**
-    * Altera os dados da conta
-    *
-    * @see https://app.omie.com.br/api/v1/geral/contacorrente/#AlterarContaCorrente
-    * @param Array $conta
-    * @return json
-    */
+     * Altera os dados da conta
+     *
+     * @see https://app.omie.com.br/api/v1/geral/contacorrente/#AlterarContaCorrente
+     * @param Array $conta
+     * @return json
+     */
     public function alterar($conta)
     {
         return $this->http->post(
@@ -89,12 +90,12 @@ class Conta
     }
 
     /**
-    * Altera se existir ou inclui uma conta
-    *
-    * @see https://app.omie.com.br/api/v1/geral/contacorrente/#UpsertContaCorrente
-    * @param Array $conta
-    * @return json
-    */
+     * Altera se existir ou inclui uma conta
+     *
+     * @see https://app.omie.com.br/api/v1/geral/contacorrente/#UpsertContaCorrente
+     * @param Array $conta
+     * @return json
+     */
     public function upsert($conta)
     {
         return $this->http->post(
@@ -107,12 +108,12 @@ class Conta
 
 
     /**
-    * Inclui o cliente no Omie
-    *
-    * @see https://app.omie.com.br/api/v1/geral/contacorrente/#IncluirContaCorrente
-    * @param Array $conta
-    * @return json
-    */
+     * Inclui o cliente no Omie
+     *
+     * @see https://app.omie.com.br/api/v1/geral/contacorrente/#IncluirContaCorrente
+     * @param Array $conta
+     * @return json
+     */
     public function incluir($conta)
     {
         return $this->http->post(
@@ -122,5 +123,4 @@ class Conta
             'IncluirContaCorrente'
         );
     }
-
 }

@@ -9,7 +9,8 @@
     ],
     "type": "library",
     "license": "GPL-3.0-only",
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
+    "prefer-stable": false,
     "require": {
         "php": ">=7.1.3"
     },
