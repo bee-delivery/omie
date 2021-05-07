@@ -29,7 +29,6 @@ class Movimento
         $requestBody = array_merge([
             'nPagina'        => $nPagina,
             'nRegPorPagina'  => $nRegPorPagina,
-
         ], $arrayFiltros);
 
         return $this->http->post(
