@@ -19,19 +19,23 @@ class Pagavel
      * Lista as contas a pagar cadastradas.
      *
      * @see https://app.omie.com.br/api/v1/financas/contapagar/#ListarContasPagar
-     * @param Integer $pagina, $registros_por_pagina
-     * @param String $apenas_importado, S/N
+     * @param Integer $nRegPorPagina Número de registro por página
+     * @param Integer $nPagina Número da página
+     * @param Array $arrayFiltros Array de filtros
      * @return json
      */
-    public function listar($pagina = 1, $registros_por_pagina = 50, $apenas_importado_api = 'N')
+    public function listar($nRegPorPagina = 200, $nPagina = 1, $arrayFiltros = [])
     {
-        return $this->http->post('/financas/contapagar/', [
+        $requestBody = array_merge([
+            'pagina'                => $nPagina,
+            'registros_por_pagina'  => $nRegPorPagina,
+        ], $arrayFiltros);
 
-            'pagina'                => $pagina,
-            'registros_por_pagina'  => $registros_por_pagina,
-            'apenas_importado_api'  => $apenas_importado_api,
-
-        ], 'ListarContasPagar');
+        return $this->http->post(
+            '/financas/contapagar/',
+            $requestBody,
+            'ListarContasPagar'
+        );
     }
 
 
