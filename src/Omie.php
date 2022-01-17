@@ -6,8 +6,9 @@ use BeeDelivery\Omie\Categoria;
 use BeeDelivery\Omie\Cliente;
 use BeeDelivery\Omie\Conta;
 use BeeDelivery\Omie\Departamento;
-use BeeDelivery\Omie\OrdemServico;
+use BeeDelivery\Omie\Extrato;
 use BeeDelivery\Omie\Movimento;
+use BeeDelivery\Omie\OrdemServico;
 use BeeDelivery\Omie\Pagavel;
 use BeeDelivery\Omie\Recebivel;
 
@@ -31,6 +32,11 @@ class Omie
     public function departamento($app_key, $app_secret)
     {
         return new Departamento($app_key, $app_secret);
+    }
+
+    public function extrato($app_key, $app_secret)
+    {
+        return new Extrato($app_key, $app_secret);
     }
 
     public function movimento($app_key, $app_secret)
