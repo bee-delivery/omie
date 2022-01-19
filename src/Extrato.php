@@ -35,7 +35,7 @@ class Extrato
         return $this->http->post(
             '/financas/extrato/',
             $requestBody,
-            'ListaMovimentos'
+            'ListarExtrato'
         );
     }
 }
