@@ -129,4 +129,22 @@ class Cliente
 
         );
     }
+
+    
+
+    /**
+     * Listar os cadastros de clientes de acordo com o filtro informado
+     */
+    public function listarClientes($nRegPorPagina = 200, $nPagina = 1, $arrayFiltros = []){
+        $requestBody = array_merge([
+            'pagina'                => $nPagina,
+            'registros_por_pagina'  => $nRegPorPagina,
+        ], $arrayFiltros);
+
+        return $this->http->post(
+            '/geral/clientes/',
+            $requestBody,
+            'ListarClientes'
+        );
+    }
 }
