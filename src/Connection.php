@@ -3,6 +3,7 @@
 namespace BeeDelivery\Omie;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class Connection
 {
@@ -57,7 +58,7 @@ class Connection
 
             return [
                 'code'     => $e->getCode(),
-                'response' => $e->getMessage()
+                'response' => $this->extractResponseFromException($e)
             ];
         }
 
@@ -86,10 +87,9 @@ class Connection
                 'response' => json_decode($response->getBody()->getContents())
             ];
         } catch (\Exception $e) {
-
             return [
                 'code'     => $e->getCode(),
-                'response' => $e->getMessage()
+                'response' => $this->extractResponseFromException($e)
             ];
         }
     }
@@ -98,5 +98,35 @@ class Connection
     {
         $response = $this->http->delete($this->base_url . $url);
         return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
+     * Extract response from exception, trying to get JSON from response body if available
+     *
+     * @param \Exception $e
+     * @return string|array
+     */
+    private function extractResponseFromException(\Exception $e): string|array
+    {
+        $response = $e->getMessage();
+        
+        // Try to capture the response body if the exception has a response
+        if ($e instanceof RequestException) {
+            $httpResponse = $e->getResponse();
+            
+            if ($httpResponse !== null) {
+                $responseBody = $httpResponse->getBody()->getContents();
+                $decoded = json_decode($responseBody, true);
+                
+                // Validate if the json_decode was successful
+                if (json_last_error() === JSON_ERROR_NONE && $decoded !== null) {
+                    $response = $decoded;
+                } else {
+                    $response = $responseBody;
+                }
+            }
+        }
+
+        return $response;
     }
 }
